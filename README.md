@@ -12,7 +12,9 @@ Cheers, Alex
 *I need to thank my friend [Marta Pinheiro](https://github.com/smartiepinheiro) who helped me out in the process.*
 
 
-For now, the application is not yet hosted anywhere, so:
+The application is hosted at netlify so you can just click [here](https://cryptit.netlify.app).
+
+If you want to run the app yourself, follow here:
 #### prerequisites
  [NODE](https://nodejs.org/en/download/) installed on your computer
  
