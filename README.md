@@ -7,10 +7,14 @@ This is a small project to help understand a bit more of React, Javascript, CSS 
 
 For now, the application is not yet hosted anywhere, so:
 ## prerequisits
- NODE installed on your computer
+ [NODE](https://nodejs.org/en/download/) installed on your computer
+ 
  open your command line
+ 
  cd into cryptic directory
+ 
  perform npm install
+ 
  perform npm start
 
 Hope you can use this application, that is going to be under development in the incoming times.
