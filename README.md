@@ -6,7 +6,7 @@ Crypt iT is a wep application designed to encrypt and decrypt your texts for a s
 This is a small project to help understand a bit more of React, Javascript, CSS and Html.
 
 For now, the application is not yet hosted anywhere, so:
-## prerequisits
+#### prerequisites
  [NODE](https://nodejs.org/en/download/) installed on your computer
  
  open your command line
