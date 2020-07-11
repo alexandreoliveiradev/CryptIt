@@ -21,7 +21,6 @@ export function decryptText(text) {
 
     }
 
-    console.log(output);
     return output.replace(/´/g, " ").replace(/`/g, " ")
         .replace(/'/g, " ").replace(/§/g, ":");
 }
@@ -226,6 +225,5 @@ function replaceChar(character) {
             option = character;
             break;
     }
-    console.log(option)
     return option;
 }

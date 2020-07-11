@@ -8,7 +8,6 @@ import LockOpenIcon from '@material-ui/icons/LockOpen';
 import {decryptText} from "./code/decrypter";
 import {encryptText} from "./code/encrypter";
 import InputBase from "@material-ui/core/InputBase";
-import {height} from "@material-ui/system";
 
 let output;
 
@@ -23,6 +22,13 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         marginLeft: 'auto',
         marginRight: 'auto',
+    },
+    copy: {
+        margin: theme.spacing(1),
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        cursor: "pointer" ,
+        fontWeight: "bold"
     }
 }));
 
@@ -55,15 +61,23 @@ function App() {
                     onClick={handleClickEnc}
                 >encrypt</Button>
                 <InputBase
-                    id = "outputEnc"
+                    id="outputEnc"
                     className={classes.answer}
                     multiline
-                    readOnly = {true}
+                    readOnly={true}
                     style={{width: '35%'}}
-                    //rowsMax={5}
-                    defaultValue = ""
-                    inputProps={{ 'aria-label': 'naked' }}
-                    onClick = {clickTextEnc}
+                    defaultValue=""
+                    inputProps={{'aria-label': 'naked'}}
+                    onClick={clickTextEnc}
+                />
+                <InputBase
+                    id="copyEnc"
+                    className={classes.copy}
+                    readOnly={true}
+                    style={{width: '4%'}}
+                    defaultValue=""
+                    inputProps={{'aria-label': 'naked'}}
+                    onClick={clickCopyEnc}
                 />
                 <br></br>
                 <p>decrypt your text</p>
@@ -85,16 +99,27 @@ function App() {
                     onClick={handleClickDec}
                 >decrypt</Button>
                 <InputBase
-                    id = "outputDec"
+                    id="outputDec"
                     className={classes.answer}
                     multiline
-                    readOnly = {true}
+                    readOnly={true}
                     style={{width: '35%'}}
-                    //rowsMax={5}
                     defaultValue=""
-                    inputProps={{ 'aria-label': 'naked' }}
-                    onClick = {clickTextDec}
+                    inputProps={{'aria-label': 'naked'}}
+                    onClick={clickTextDec}
                 />
+                <InputBase
+                    id="copyDec"
+                    className={classes.copy}
+                    readOnly={true}
+                    style={{width: '4%'}}
+                    defaultValue=""
+                    inputProps={{'aria-label': 'naked'}}
+                    onClick={clickCopyDec}
+                />
+                <dialog>
+
+                </dialog>
                 <br></br>
                 <span>brought to you by <a onClick={handleClickName}>Alexandre Oliveira</a></span>
             </header>
@@ -109,7 +134,9 @@ function handleClickEnc() {
     if (output !== "Nothing to encrypt.") {
         document.getElementById("decrypt").value = "";
         document.getElementById("outputDec").value = "";
-        if (output.toString().length >= 50){
+        document.getElementById("copyEnc").value = "";
+        document.getElementById("copyEnc").value = "copy";
+        if (output.toString().length >= 50) {
             output = "click me to read entire text\n".concat(output);
         }
         document.getElementById("outputEnc").value = output.toString();
@@ -122,7 +149,9 @@ function handleClickDec() {
     if (output !== "Nothing to decrypt.") {
         document.getElementById("encrypt").value = "";
         document.getElementById("outputEnc").value = "";
-        if (output.toString().length >= 50){
+        document.getElementById("copyEnc").value = "";
+        document.getElementById("copyDec").value = "copy";
+        if (output.toString().length >= 50) {
             output = "click me to read entire text\n".concat(output);
         }
         document.getElementById("outputDec").value = output.toString();
@@ -133,17 +162,33 @@ const handleClickName = () => {
     return window.open('https://www.linkedin.com/in/alexandreoliveira-softdev/', '_blank')
 }
 
-function clickTextDec(){
-    let text = document.getElementById( "outputDec").value;
-    document.getElementById( "outputDec").value =
+function clickTextDec() {
+    let text = document.getElementById("outputDec").value;
+    document.getElementById("outputDec").value =
         text.replace("click me to read entire text\n", "");
 }
 
-function clickTextEnc(){
-    let text = document.getElementById( "outputEnc").value;
-    document.getElementById( "outputEnc").value =
+function clickTextEnc() {
+    let text = document.getElementById("outputEnc").value;
+    document.getElementById("outputEnc").value =
         text.replace("click me to read entire text\n", "");
 }
+
+function clickCopyEnc(){
+    let copyText = document.getElementById("outputEnc");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+
+}
+
+function clickCopyDec(){
+    let copyText = document.getElementById("outputDec");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+}
+
 
 
 export default App;

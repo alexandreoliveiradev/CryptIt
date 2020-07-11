@@ -15,7 +15,6 @@ export function encryptText(text) {
         }
     }
     output = everySix(output);
-    console.log(output);
     output = reverse(output);
     return output;
 }
@@ -69,7 +68,6 @@ export function reverse(toReverse) {
         result[i] = string[string.length - i - 1];
 
     }
-    console.log(result.toString());
     return result.join('¨').replace(/¨/g, ""); //toString().replace(/,/g, "");
 
 }
