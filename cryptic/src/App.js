@@ -9,7 +9,6 @@ import {decryptText} from "./code/decrypter";
 import {encryptText} from "./code/encrypter";
 import InputBase from "@material-ui/core/InputBase";
 import AlertDialogSlide from "./SlideHelp";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
 let output;
 
@@ -26,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 'auto',
     },
     copy: {
-        margin: theme.spacing(1),
+        margin: theme.spacing(0),
         marginLeft: 'auto',
         marginRight: 'auto',
-        cursor: "pointer" ,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        textAlign: "right"
     }
 }));
 
@@ -75,12 +74,11 @@ function App() {
                     id="copyEnc"
                     className={classes.copy}
                     readOnly={true}
-                    style={{width: '4%'}}
+                    style={{width: '12%'}}
                     defaultValue=""
                     inputProps={{'aria-label': 'naked'}}
                     onClick={clickCopyEnc}
                 />
-                <br></br>
                 <p>decrypt your text</p>
                 <form noValidate autoComplete="off">
                     <TextField
@@ -113,16 +111,13 @@ function App() {
                     id="copyDec"
                     className={classes.copy}
                     readOnly={true}
-                    style={{width: '4%'}}
+                    style={{width: '12%'}}
                     defaultValue=""
                     inputProps={{'aria-label': 'naked'}}
                     onClick={clickCopyDec}
                 />
                 <AlertDialogSlide />
-                <div style={{fontSize: 'medium' }}>brought to you by <a onClick={handleClickName}>Alexandre Oliveira
-                    <LinkedInIcon color="primary" display="inline-flex" /></a></div>
             </header>
-
         </div>
     );
 }
@@ -135,7 +130,7 @@ function handleClickEnc() {
         document.getElementById("outputDec").value = "";
         document.getElementById("copyEnc").value = "";
         document.getElementById("copyEnc").value = "copy";
-        if (output.toString().length >= 50) {
+        if (output.length >= 50) {
             output = "click me to read entire text\n".concat(output);
         }
         document.getElementById("outputEnc").value = output.toString();
@@ -147,19 +142,18 @@ function handleClickDec() {
     output = decryptText(output.toString());
     if (output !== "Nothing to decrypt.") {
         document.getElementById("encrypt").value = "";
+        document.getElementById("encrypt")
         document.getElementById("outputEnc").value = "";
         document.getElementById("copyEnc").value = "";
         document.getElementById("copyDec").value = "copy";
-        if (output.toString().length >= 50) {
+         if (output.length >= 50) {
             output = "click me to read entire text\n".concat(output);
         }
         document.getElementById("outputDec").value = output.toString();
     }
 }
 
-const handleClickName = () => {
-    return window.open('https://www.linkedin.com/in/alexandreoliveira-softdev/', '_blank')
-}
+
 
 function clickTextDec() {
     let text = document.getElementById("outputDec").value;
