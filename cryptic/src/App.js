@@ -8,6 +8,8 @@ import LockOpenIcon from '@material-ui/icons/LockOpen';
 import {decryptText} from "./code/decrypter";
 import {encryptText} from "./code/encrypter";
 import InputBase from "@material-ui/core/InputBase";
+import AlertDialogSlide from "./SlideHelp";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
 let output;
 
@@ -42,7 +44,6 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <h1>Crypt iT</h1>
-                <br></br>
                 <p>encrypt your text</p>
                 <form noValidate autoComplete="off">
                     <TextField
@@ -117,11 +118,9 @@ function App() {
                     inputProps={{'aria-label': 'naked'}}
                     onClick={clickCopyDec}
                 />
-                <dialog>
-
-                </dialog>
-                <br></br>
-                <span>brought to you by <a onClick={handleClickName}>Alexandre Oliveira</a></span>
+                <AlertDialogSlide />
+                <div style={{fontSize: 'medium' }}>brought to you by <a onClick={handleClickName}>Alexandre Oliveira
+                    <LinkedInIcon color="primary" display="inline-flex" /></a></div>
             </header>
 
         </div>
