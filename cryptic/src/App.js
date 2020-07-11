@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 'auto',
         marginRight: 'auto',
         fontWeight: "bold",
-        textAlign: "right"
     }
 }));
 
@@ -74,7 +73,7 @@ function App() {
                     id="copyEnc"
                     className={classes.copy}
                     readOnly={true}
-                    style={{width: '12%'}}
+                    style={{width: '35%'}}
                     defaultValue=""
                     inputProps={{'aria-label': 'naked'}}
                     onClick={clickCopyEnc}
@@ -111,7 +110,7 @@ function App() {
                     id="copyDec"
                     className={classes.copy}
                     readOnly={true}
-                    style={{width: '12%'}}
+                    style={{width: '35%'}}
                     defaultValue=""
                     inputProps={{'aria-label': 'naked'}}
                     onClick={clickCopyDec}
