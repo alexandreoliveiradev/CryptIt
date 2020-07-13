@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-
 function App() {
 
     const classes = useStyles();
@@ -122,20 +121,27 @@ function App() {
 }
 
 function handleClickDec() {
+
     output = document.getElementById("decrypt").value;
     output = decryptText(output.toString());
     if (output !== "Nothing to decrypt.") {
         document.getElementById("encrypt").value = "";
         document.getElementById("outputEnc").value = "";
         document.getElementById("copyEnc").value = "";
-        if (output.length >= 50) {
-            output = "click me to read entire text\n".concat(output);
+        if (isMultiLineDec(output)) {
+            if (isMultiLineDec("click me to read entire text\n")){
+                output = "read more\n".concat(output);
+            } else {
+                output = "click me to read entire text\n".concat(output);
+            }
         } else {
             document.getElementById("copyDec").value = "copy";
         }
         document.getElementById("outputDec").value = output.toString();
     }
 }
+
+
 
 function handleClickEnc() {
     output = document.getElementById("encrypt").value;
@@ -144,8 +150,12 @@ function handleClickEnc() {
         document.getElementById("decrypt").value = "";
         document.getElementById("outputDec").value = "";
         document.getElementById("copyDec").value = "";
-        if (output.length >= 50) {
-            output = "click me to read entire text\n".concat(output);
+        if (isMultiLineEnc(output)) {
+            if (isMultiLineDec("click me to read entire text\n")) {
+                output = "read more\n".concat(output);
+            } else {
+                output = "click me to read entire text\n".concat(output);
+            }
         } else {
             document.getElementById("copyEnc").value = "copy";
         }
@@ -153,17 +163,51 @@ function handleClickEnc() {
     }
 }
 
+function getTextWidth(text, font) {
+    let canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+    let context = canvas.getContext("2d");
+    context.font = font;
+    let metrics = context.measureText(text);
+    return metrics.width;
+}
+
+function isMultiLineDec(text){
+    let font = document.getElementById("outputDec").style.font;
+    let textSize = getTextWidth(text, font);
+    let textArea = document.getElementById("outputDec").offsetWidth;
+    let ratio = textSize/textArea;
+    return (ratio > 0.61);
+}
+
+function isMultiLineEnc(text){
+    let font = document.getElementById("outputEnc").style.font;
+    let textSize = getTextWidth(text, font);
+    let textArea = document.getElementById("outputEnc").offsetWidth;
+    let ratio = textSize/textArea;
+    return (ratio > 0.61);
+}
+
 function clickTextDec() {
     let text = document.getElementById("outputDec").value;
-    document.getElementById("outputDec").value =
-        text.replace("click me to read entire text\n", "");
+    if (text.toString().includes("read more\n")){
+        document.getElementById("outputDec").value =
+            text.replace("read more\n", "");
+    } else {
+        document.getElementById("outputDec").value =
+            text.replace("click me to read entire text\n", "");
+    }
     document.getElementById("copyDec").value = "copy";
 }
 
 function clickTextEnc() {
     let text = document.getElementById("outputEnc").value;
-    document.getElementById("outputEnc").value =
-        text.replace("click me to read entire text\n", "");
+    if (text.toString().includes("read more\n")){
+        document.getElementById("outputEnc").value =
+            text.replace("read more\n", "");
+    } else {
+        document.getElementById("outputEnc").value =
+            text.replace("click me to read entire text\n", "");
+    }
     document.getElementById("copyEnc").value = "copy";
 }
 
