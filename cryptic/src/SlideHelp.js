@@ -66,7 +66,7 @@ export default function AlertDialogSlide() {
                         by clicking copy you are saving the created text to your clipboard for
                         a faster paste, wherever you need it
                         <br></br><br></br>
-                        my goals are only to creat something fun, useful and keep learning new stuff,
+                        my goals are only to create something fun, useful and keep learning new stuff,
                         hope you enjoy
                         <br></br><br></br>
                         Alexandre Oliveira

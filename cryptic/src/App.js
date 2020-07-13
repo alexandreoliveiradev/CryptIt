@@ -121,49 +121,50 @@ function App() {
     );
 }
 
+function handleClickDec() {
+    output = document.getElementById("decrypt").value;
+    output = decryptText(output.toString());
+    if (output !== "Nothing to decrypt.") {
+        document.getElementById("encrypt").value = "";
+        document.getElementById("outputEnc").value = "";
+        document.getElementById("copyEnc").value = "";
+        if (output.length >= 50) {
+            output = "click me to read entire text\n".concat(output);
+        } else {
+            document.getElementById("copyDec").value = "copy";
+        }
+        document.getElementById("outputDec").value = output.toString();
+    }
+}
+
 function handleClickEnc() {
     output = document.getElementById("encrypt").value;
     output = encryptText(output.toString());
     if (output !== "Nothing to encrypt.") {
         document.getElementById("decrypt").value = "";
         document.getElementById("outputDec").value = "";
-        document.getElementById("copyEnc").value = "";
-        document.getElementById("copyEnc").value = "copy";
+        document.getElementById("copyDec").value = "";
         if (output.length >= 50) {
             output = "click me to read entire text\n".concat(output);
+        } else {
+            document.getElementById("copyEnc").value = "copy";
         }
         document.getElementById("outputEnc").value = output.toString();
     }
 }
 
-function handleClickDec() {
-    output = document.getElementById("decrypt").value;
-    output = decryptText(output.toString());
-    if (output !== "Nothing to decrypt.") {
-        document.getElementById("encrypt").value = "";
-        document.getElementById("encrypt")
-        document.getElementById("outputEnc").value = "";
-        document.getElementById("copyEnc").value = "";
-        document.getElementById("copyDec").value = "copy";
-         if (output.length >= 50) {
-            output = "click me to read entire text\n".concat(output);
-        }
-        document.getElementById("outputDec").value = output.toString();
-    }
-}
-
-
-
 function clickTextDec() {
     let text = document.getElementById("outputDec").value;
     document.getElementById("outputDec").value =
         text.replace("click me to read entire text\n", "");
+    document.getElementById("copyDec").value = "copy";
 }
 
 function clickTextEnc() {
     let text = document.getElementById("outputEnc").value;
     document.getElementById("outputEnc").value =
         text.replace("click me to read entire text\n", "");
+    document.getElementById("copyEnc").value = "copy";
 }
 
 function clickCopyEnc(){
