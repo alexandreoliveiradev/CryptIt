@@ -63,8 +63,10 @@ function App() {
                     className={classes.answer}
                     multiline
                     readOnly={true}
+                    rows = {1}
                     style={{width: '35%'}}
                     defaultValue=""
+                    rowsMax={5}
                     inputProps={{'aria-label': 'naked'}}
                     onClick={clickTextEnc}
                 />
@@ -99,6 +101,8 @@ function App() {
                     id="outputDec"
                     className={classes.answer}
                     multiline
+                    rowsMax={5}
+                    rows = {1}
                     readOnly={true}
                     style={{width: '35%'}}
                     defaultValue=""
