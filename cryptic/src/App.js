@@ -48,6 +48,7 @@ function App() {
                         label="write here"
                         style={{width: '35%'}}
                         multiline
+                        rows={1}
                         rowsMax={5}
                         color="primary"/>
                 </form>
@@ -63,8 +64,10 @@ function App() {
                     className={classes.answer}
                     multiline
                     readOnly={true}
+                    rows = {1}
                     style={{width: '35%'}}
                     defaultValue=""
+                    rowsMax={5}
                     inputProps={{'aria-label': 'naked'}}
                     onClick={clickTextEnc}
                 />
@@ -82,6 +85,7 @@ function App() {
                     <TextField
                         id="decrypt"
                         multiline
+                        rows={1}
                         style={{width: '35%'}}
                         rowsMax={5}
                         label="write here"
@@ -99,6 +103,8 @@ function App() {
                     id="outputDec"
                     className={classes.answer}
                     multiline
+                    rowsMax={5}
+                    rows = {1}
                     readOnly={true}
                     style={{width: '35%'}}
                     defaultValue=""
