@@ -202,7 +202,9 @@ function clickTextDec() {
         document.getElementById("outputDec").value =
             text.replace("click me to read entire text\n", "");
     }
-    document.getElementById("copyDec").value = "copy";
+    if (text !== ""){
+        document.getElementById("copyDec").value = "copy";
+    }
 }
 
 function clickTextEnc() {
@@ -214,7 +216,9 @@ function clickTextEnc() {
         document.getElementById("outputEnc").value =
             text.replace("click me to read entire text\n", "");
     }
-    document.getElementById("copyEnc").value = "copy";
+    if (text !== ""){
+        document.getElementById("copyEnc").value = "copy";
+    }
 }
 
 function clickCopyEnc(){
