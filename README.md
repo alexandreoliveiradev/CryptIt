@@ -5,7 +5,7 @@ Hello and welcome to Crypt iT.
 Crypt iT is a wep application designed to encrypt and decrypt your texts for a safer communication. 
 This is a small project to help understand a bit more of React, Javascript, CSS and Html.
 
-Hope you can use this application, that is going to be under development in the incoming times.
+Hope you can use this application for good.
 
 Cheers, Alex
 
